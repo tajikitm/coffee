@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کافه دلنشین - منوی دیجیتال اختصاصی</title>
+    <meta name="description" content="منوی دیجیتال حرفه ای کافه دلنشین با انیمیشن های زیبا و رابط کاربری پیشرفته">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f8f5f0',
+                            100: '#ede6d9',
+                            200: '#d9ccb3',
+                            300: '#c2ac88',
+                            400: '#ae8f63',
+                            500: '#9e7a4f',
+                            600: '#8a6443',
+                            700: '#6f4f38',
+                            800: '#5a4030',
+                            900: '#4a3528',
+                        },
+                        secondary: {
+                            50: '#fff5e6',
+                            100: '#ffe8cc',
+                            200: '#ffd699',
+                            300: '#ffc266',
+                            400: '#ffad33',
+                            500: '#ff9900',
+                            600: '#e68a00',
+                            700: '#cc7a00',
+                            800: '#b36b00',
+                            900: '#995c00',
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['Vazirmatn', 'sans-serif'],
+                        'display': ['Vazirmatn', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(40px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --header-height: 120px;
+        }
+        
+        body {
+            background-image: url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(0, 0, 0, 0.85);
+            background-blend-mode: overlay;
+            min-height: 100vh;
+        }
+        
+        .header-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+        }
+        
+        .logo-border {
+            border: 4px solid rgba(255, 153, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 153, 0, 0.3);
+        }
+        
+        .menu-category {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        
+        .menu-category:hover {
+            transform: translateY(-8px) scale(1.05) rotateX(5deg);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .menu-category.active {
+            background: linear-gradient(135deg, rgba(255,153,0,0.1) 0%, rgba(255,153,0,0.2) 100%);
+            border-color: rgba(255, 153, 0, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px) scale(1.02) rotateX(2deg);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-image {
+            transition: transform 0.6s ease;
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, rgba(255,153,0,0.9) 0%, rgba(230,138,0,0.9) 100%);
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+        
+        .add-to-cart {
+            background: linear-gradient(135deg, rgba(158,122,79,0.9) 0%, rgba(138,100,67,0.9) 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(158, 122, 79, 0.3);
+        }
+        
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, rgba(138,100,67,0.9) 0%, rgba(110,80,50,0.9) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(158, 122, 79, 0.4);
+        }
+        
+        .footer-gradient {
+            background: linear-gradient(to top, rgba(74,53,40,0.95) 0%, rgba(58,42,32,0.95) 100%);
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-sticky {
+                position: sticky;
+                top: 0;
+                z-index: 40;
+                backdrop-filter: blur(10px);
+                background-color: rgba(255, 255, 255, 0.95);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 flex flex-col">
+    <!-- Floating Coffee Beans Decorations -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-primary-500 opacity-10 animate-float" style="animation-delay: 0s;"></div>
+        <div class="absolute top-1/3 right-1/3 w-6 h-6 rounded-full bg-secondary-500 opacity-10 animate-float" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-10 h-10 rounded-full bg-primary-600 opacity-10 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-5 h-5 rounded-full bg-secondary-600 opacity-10 animate-float" style="animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header-gradient pt-8 pb-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center animate__animated animate__fadeIn">
+                <div class="relative mb-6">
+                    <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80" 
+                         alt="لوگوی کافه دلنشین - تصویر یک فنجان قهوه داغ با بخار و دانه های قهوه در پس زمینه" 
+                         class="w-28 h-28 rounded-full object-cover logo-border">
+                    <div class="absolute -bottom-2 -right-2 bg-secondary-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                        <i class="fas fa-heart text-lg"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 font-display tracking-wide">کافه دلنشین</h1>
+                <p class="text-xl text-secondary-300 mb-6 animate__animated animate__fadeIn animate__delay-1s">به دنیای طعم های بی نظیر خوش آمدید</p>
+                
+                <div class="flex flex-wrap justify-center gap-6 mt-4 text-sm md:text-base max-w-2xl">
+                    <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm px-4 py-2 rounded-full border border-white border-opacity-20">
+                        <i class="fas fa-map-marker-alt text-secondary-400 ml-2"></i>
+                        <span>تهران، خیابان ولیعصر، کوچه فلان</span>
+                    </div>
+                    <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm px-4 py-2 rounded-full border border-white border-opacity-20">
+                        <i class="fas fa-phone text-secondary-400 ml-2"></i>
+                        <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                    </div>
+                    <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm px-4 py-2 rounded-full border border-white border-opacity-20">
+                        <i class="fas fa-clock text-secondary-400 ml-2"></i>
+                        <span>شنبه تا پنجشنبه: ۸ صبح تا ۱۲ شب</span>
+                    </div>
+                </div>
+                
+                <button id="viewMenuBtn" class="mt-10 px-8 py-4 bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-bold rounded-full transition-all duration-500 shadow-xl hover:shadow-2xl animate__animated animate__pulse animate__infinite animate__slower">
+                    <span class="text-lg">مشاهده منوی دیجیتال</span>
+                    <i class="fas fa-chevron-down mr-3 animate-bounce"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-12 relative z-10">
+        <!-- Menu Section (Hidden by default) -->
+        <div id="menuSection" class="hidden animate__animated animate__fadeIn">
+            <!-- Categories Navigation -->
+            <div class="mobile-sticky mb-10 pt-4 pb-4">
+                <div class="flex overflow-x-auto pb-4 scrollbar-hide">
+                    <div class="flex space-x-6 space-x-reverse px-4">
+                        <button class="category-btn flex flex-col items-center px-6 py-3 rounded-2xl bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 menu-category" data-category="hot-drinks">
+                            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" 
+                                 alt="نوشیدنی های گرم - تصویر فنجان قهوه داغ با بخار" 
+                                 class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white border-opacity-30">
+                            <span class="text-sm font-medium text-white">نوشیدنی های گرم</span>
+                        </button>
+                        <button class="category-btn flex flex-col items-center px-6 py-3 rounded-2xl bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 menu-category" data-category="cold-drinks">
+                            <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" 
+                                 alt="نوشیدنی های سرد - تصویر لیوان آیس لاته با قطعات یخ" 
+                                 class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white border-opacity-30">
+                            <span class="text-sm font-medium text-white">نوشیدنی های سرد</span>
+                        </button>
+                        <button class="category-btn flex flex-col items-center px-6 py-3 rounded-2xl bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 menu-category" data-category="breakfast">
+                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" 
+                                 alt="صبحانه - تصویر صبحانه انگلیسی کامل با تخم مرغ و بیکن" 
+                                 class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white border-opacity-30">
+                            <span class="text-sm font-medium text-white">صبحانه</span>
+                        </button>
+                        <button class="category-btn flex flex-col items-center px-6 py-3 rounded-2xl bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 menu-category" data-category="desserts">
+                            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" 
+                                 alt="دسرها - تصویر چیزکیک توت فرنگی با خامه" 
+                                 class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white border-opacity-30">
+                            <span class="text-sm font-medium text-white">دسرها</span>
+                        </button>
+                        <button class="category-btn flex flex-col items-center px-6 py-3 rounded-2xl bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 menu-category" data-category="snacks">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" 
+                                 alt="اسنک ها - تصویر برگر مخصوص با پنیر آب شده" 
+                                 class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white border-opacity-30">
+                            <span class="text-sm font-medium text-white">اسنک ها</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="productsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer-gradient pt-12 pb-8 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="text-center md:text-right">
+                    <h3 class="text-xl font-bold mb-6 text-white relative inline-block">
+                        <span class="relative z-10 px-2">درباره کافه دلنشین</span>
+                        <span class="absolute bottom-0 right-0 w-full h-1 bg-secondary-500 z-0"></span>
+                    </h3>
+                    <p class="text-primary-200 leading-relaxed">کافه دلنشین با بیش از ۱۰ سال سابقه در ارائه بهترین نوشیدنی‌ها و غذاها، مکانی ایده‌آل برای لحظات خوش شماست. ما با استفاده از باکیفیت‌ترین مواد اولیه و تیمی حرفه‌ای، تجربه‌ای منحصر به فرد برای شما خلق می‌کنیم.</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold mb-6 text-white relative inline-block">
+                        <span class="relative z-10 px-2">ساعات کاری</span>
+                        <span class="absolute bottom-0 right-0 w-full h-1 bg-secondary-500 z-0"></span>
+                    </h3>
+                    <ul class="space-y-4 text-primary-200">
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-clock text-secondary-400 ml-3"></i>
+                            <span>شنبه تا چهارشنبه: ۸ صبح تا ۱۲ شب</span>
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-clock text-secondary-400 ml-3"></i>
+                            <span>پنجشنبه: ۸ صبح تا ۱ بامداد</span>
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-clock text-secondary-400 ml-3"></i>
+                            <span>جمعه: ۱۰ صبح تا ۱۲ شب</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold mb-6 text-white relative inline-block">
+                        <span class="relative z-10 px-2">ارتباط با ما</span>
+                        <span class="absolute bottom-0 right-0 w-full h-1 bg-secondary-500 z-0"></span>
+                    </h3>
+                    <div class="flex flex-col space-y-5 text-primary-200">
+                        <div class="flex items-center justify-center md:justify-start">
+                            <div class="bg-secondary-500 bg-opacity-20 p-2 rounded-full mr-3">
+                                <i class="fas fa-phone text-secondary-400"></i>
+                            </div>
+                            <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-start">
+                            <div class="bg-secondary-500 bg-opacity-20 p-2 rounded-full mr-3">
+                                <i class="fas fa-envelope text-secondary-400"></i>
+                            </div>
+                            <span>info@delneshin-cafe.ir</span>
+                        </div>
+                        <div class="flex justify-center md:justify-start space-x-5 space-x-reverse mt-2">
+                            <a href="#" class="text-white hover:text-secondary-400 transition-colors duration-300 transform hover:scale-110">
+                                <div class="bg-secondary-500 bg-opacity-20 p-3 rounded-full">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="text-white hover:text-secondary-400 transition-colors duration-300 transform hover:scale-110">
+                                <div class="bg-secondary-500 bg-opacity-20 p-3 rounded-full">
+                                    <i class="fab fa-telegram text-xl"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="text-white hover:text-secondary-400 transition-colors duration-300 transform hover:scale-110">
+                                <div class="bg-secondary-500 bg-opacity-20 p-3 rounded-full">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-primary-700 mt-12 pt-6 text-center text-primary-300">
+                <p class="text-sm">© تمامی حقوق این وبسایت متعلق به <span class="text-secondary-400 font-bold">کافه دلنشین</span> می‌باشد. ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <div id="cartButton" class="fixed bottom-8 left-8 z-50 hidden animate__animated animate__fadeInUp">
+        <button class="bg-secondary-500 hover:bg-secondary-600 text-white rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-white text-secondary-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">0</span>
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        // Enhanced Cafe Data
+        const menuData = {
+            "hot-drinks": [
+                {
+                    id: 1,
+                    name: "اسپرسو",
+                    description: "قهوه اسپرسوی خالص با عطر و طعم بی نظیر، تهیه شده از دانه‌های قهوه مرغوب اتیوپی",
+                    price: 45000,
+                    image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 2,
+                    name: "کاپوچینو",
+                    description: "ترکیب عالی اسپرسو با شیر بخار دیده و فوم شیر، تزیین شده با پودر کاکائو",
+                    price: 55000,
+                    image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 3,
+                    name: "لاته",
+                    description: "اسپرسو با شیر گرم و لایه‌ای نازک از فوم شیر، مناسب برای طرفداران قهوه ملایم",
+                    price: 60000,
+                    image: "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 4,
+                    name: "چای سیاه",
+                    description: "چای سیاه مرغوب شمال با عطر و طعم طبیعی، دم‌کشیده به روش سنتی",
+                    price: 30000,
+                    image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 5,
+                    name: "هات چاکلت",
+                    description: "شکلات داغ خامه‌ای با تکه‌های شکلات بلژیکی و خامه تازه، مناسب برای هوای سرد",
+                    price: 65000,
+                    image: "https://images.unsplash.com/photo-1574085733277-851d6f7f10e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 6,
+                    name: "ماکیاتو",
+                    description: "اسپرسو با مقدار کمی فوم شیر، برای کسانی که طعم قوی قهوه را دوست دارند",
+                    price: 50000,
+                    image: "https://images.unsplash.com/photo-1534778101976-62847782c213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                }
+            ],
+            "cold-drinks": [
+                {
+                    id: 7,
+                    name: "آیس لاته",
+                    description: "اسپرسو با شیر سرد و یخ، انتخابی عالی برای روزهای گرم",
+                    price: 65000,
+                    image: "https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 8,
+                    name: "آمریکانو سرد",
+                    description: "اسپرسو با آب سرد و یخ، برای طرفداران قهوه خالص و خنک",
+                    price: 50000,
+                    image: "https://images.unsplash.com/photo-1551028157-5a51d48fcd5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 9,
+                    name: "موهیتو",
+                    description: "نوشیدنی خنک با نعنا تازه، لیمو، شکر و تکه‌های یخ، بسیار گوارا",
+                    price: 70000,
+                    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 10,
+                    name: "آبمیوه طبیعی",
+                    description: "آبمیوه تازه فصلی با یخ، تهیه شده از میوه‌های تازه و طبیعی",
+                    price: 55000,
+                    image: "https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 11,
+                    name: "میلک شیک",
+                    description: "شیر سرد با بستنی وانیلی و طعم‌های مختلف (شکلاتی، توت فرنگی، موزی)",
+                    price: 75000,
+                    image: "https://images.unsplash.com/photo-1577805947697-1e6ef7346a52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 12,
+                    name: "فراپه",
+                    description: "قهوه سرد با یخ، شیر و شکر، همزده تا بافتی نرم و کرمی ایجاد شود",
+                    price: 68000,
+                    image: "https://images.unsplash.com/photo-1596079890744-c1a0462d4d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                }
+            ],
+            "breakfast": [
+                {
+                    id: 13,
+                    name: "صبحانه انگلیسی",
+                    description: "تخم مرغ نیمرو، بیکن ترد، سوسیس، قارچ سوخاری و لوبیا پخته، همراه با نان تست",
+                    price: 120000,
+                    image: "https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 14,
+                    name: "املت ویژه",
+                    description: "املت با قارچ تازه، پنیر چدار، گوجه گیلاسی و فلفل دلمه‌ای رنگی",
+                    price: 90000,
+                    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 15,
+                    name: "پنکیک",
+                    description: "پنکیک خانگی با عسل طبیعی، میوه‌های تازه فصل و خامه زده شده",
+                    price: 85000,
+                    image: "https://images.unsplash.com/photo-1529568220523-9d3e5bc40f0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 16,
+                    name: "صبحانه ایرانی",
+                    description: "نان سنگک تازه، پنیر لیقوان، گردوی تازه، مربای خانگی و چای ایرانی",
+                    price: 80000,
+                    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 17,
+                    name: "کروسان",
+                    description: "کروسان تازه با پرکننده پنیر یا شکلات، همراه با مربا و کره",
+                    price: 60000,
+                    image: "https://images.unsplash.com/photo-1534628526458-a8de087af23c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 18,
+                    name: "اوتمیل",
+                    description: "بلغور جو دوسر با شیر، عسل، دارچین و میوه‌های خشک، انتخابی سالم و مقوی",
+                    price: 70000,
+                    image: "https://images.unsplash.com/photo-1608500218807-0a8b4c5e3e7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                }
+            ],
+            "desserts": [
+                {
+                    id: 19,
+                    name: "چیزکیک",
+                    description: "چیزکیک کلاسیک نیویورکی با بیسکویت، تزیین شده با توت فرنگی تازه",
+                    price: 80000,
+                    image: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 20,
+                    name: "تیرامیسو",
+                    description: "تیرامیسوی ایتالیایی اصیل با بیسکویت لیدی فینگر، قهوه اسپرسو و پودر کاکائو",
+                    price: 90000,
+                    image: "https://images.unsplash.com/photo-156580008024-8f2d51a4fcc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 21,
+                    name: "موس شکلات",
+                    description: "موس شکلاتی نرم و خامه‌ای با شکلات بلژیکی، بافتی لطیف و طعمی بی‌نظیر",
+                    price: 75000,
+                    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 22,
+                    name: "پودینگ وانیلی",
+                    description: "پودینگ خانگی با وانیل طبیعی، همراه با توت فرنگی و نعناع تازه",
+                    price: 65000,
+                    image: "https://images.unsplash.com/photo-1557161367-f4578f6c2a4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 23,
+                    name: "کیک هویج",
+                    description: "کیک هویج خانگی با خامه پنیر وانیلی و گردوی تازه، بسیار لطیف و خوشمزه",
+                    price: 70000,
+                    image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 24,
+                    name: "ماکارون",
+                    description: "ماکارون فرانسوی با طعم‌های مختلف (وانیل، شکلاتی، تمشک، کارامل)",
+                    price: 50000,
+                    image: "https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                }
+            ],
+            "snacks": [
+                {
+                    id: 25,
+                    name: "ساندویچ مرغ",
+                    description: "نان باگت تازه، سینه مرغ گریل شده، قارچ سوخاری، پنیر چدار و سس مخصوص",
+                    price: 95000,
+                    image: "https://images.unsplash.com/photo-1606755456206-b25206bfa433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 26,
+                    name: "پیتزا مینی",
+                    description: "پیتزا کوچک با پپرونی، پنیر موزارلای فراوان، سس گوجه خانگی و زیتون",
+                    price: 110000,
+                    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 27,
+                    name: "سیب زمینی تنوری",
+                    description: "سیب زمینی تنوری با پنیر چدار آب شده، بیکن ترد و خامه ترش",
+                    price: 85000,
+                    image: "https://images.unsplash.com/photo-1585238342020-768793bd3913?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 28,
+                    name: "سالاد سزار",
+                    description: "کاهو رومی تازه، سینه مرغ گریل شده، پنیر پارمزان، کروتون و سس سزار خانگی",
+                    price: 90000,
+                    image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 29,
+                    name: "پاستا پنه",
+                    description: "پاستا پنه با سس آلفردو خامه‌ای، قارچ تازه و پنیر پارمزان رنده شده",
+                    price: 100000,
+                    image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                },
+                {
+                    id: 30,
+                    name: "برگر مخصوص",
+                    description: "برگر گوشت گوساله با پنیر چدار، بیکن، کاهو، گوجه و سس مخصوص، همراه با سیب زمینی سرخ کرده",
+                    price: 120000,
+                    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80"
+                }
+            ]
+        };
+
+        // DOM Elements
+        const viewMenuBtn = document.getElementById('viewMenuBtn');
+        const menuSection = document.getElementById('menuSection');
+        const productsContainer = document.getElementById('productsContainer');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const cartButton = document.getElementById('cartButton');
+        let cartItems = [];
+
+        // Show menu section when button is clicked
+        viewMenuBtn.addEventListener('click', () => {
+            menuSection.classList.remove('hidden');
+            menuSection.classList.add('animate__fadeIn');
+            
+            // Scroll to menu section with smooth animation
+            anime({
+                targets: document.documentElement,
+                scrollTop: menuSection.offsetTop - 20,
+                duration: 1000,
+                easing: 'easeInOutQuad'
+            });
+            
+            // Load first category by default with animation
+            setTimeout(() => {
+                loadProducts('hot-drinks');
+            }, 300);
+            
+            // Highlight first category button
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            categoryButtons[0].classList.add('active');
+            
+            // Show cart button
+            setTimeout(() => {
+                cartButton.classList.remove('hidden');
+                cartButton.classList.add('animate__fadeInUp');
+            }, 500);
+            
+            // Stop the pulse animation
+            viewMenuBtn.classList.remove('animate__pulse');
+        });
+
+        // Load products for selected category with animations
+        function loadProducts(category) {
+            productsContainer.innerHTML = '';
+            
+            const products = menuData[category];
+            
+            products.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white bg-opacity-10 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-white border-opacity-20';
+                productCard.style.opacity = '0';
+                productCard.style.transform = 'translateY(20px)';
+                productCard.innerHTML = `
+                    <div class="relative overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="product-image w-full h-48 object-cover" loading="lazy">
+                        <div class="absolute bottom-4 right-4 price-tag text-white px-3 py-1 rounded-full text-sm font-bold">
+                            ${product.price.toLocaleString()} تومان
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-white">${product.name}</h3>
+                        </div>
+                        <p class="text-primary-200 text-sm mb-5">${product.description}</p>
+                        <button class="add-to-cart w-full py-3 text-white rounded-lg font-medium" data-id="${product.id}">
+                            افزودن به سبد خرید
+                            <i class="fas fa-plus mr-2"></i>
+                        </button>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+                
+                // Animate each product card sequentially
+                setTimeout(() => {
+                    anime({
+                        targets: productCard,
+                        opacity: 1,
+                        translateY: 0,
+                        duration: 600,
+                        easing: 'easeOutQuad'
+                    });
+                }, index * 100);
+            });
+        }
+
+        // Handle category button clicks with animations
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                
+                // Update active button style with animation
+                anime({
+                    targets: '.category-btn.active',
+                    scale: 1,
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)',
+                    duration: 300,
+                    easing: 'easeInOutQuad'
+                });
+                
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                anime({
+                    targets: button,
+                    scale: 1.05,
+                    backgroundColor: 'rgba(255, 153, 0, 0.2)',
+                    borderColor: 'rgba(255, 153, 0, 0.5)',
+                    duration: 300,
+                    easing: 'easeInOutQuad'
+                });
+                
+                // Animate out current products
+                anime({
+                    targets: '.product-card',
+                    opacity: 0,
+                    translateY: 20,
+                    duration: 300,
+                    easing: 'easeInQuad',
+                    complete: () => {
+                        // Load new products after animation completes
+                        loadProducts(category);
+                        
+                        // Scroll to top of products with offset
+                        setTimeout(() => {
+                            const targetPosition = productsContainer.offsetTop - 20;
+                            anime({
+                                targets: document.documentElement,
+                                scrollTop: targetPosition,
+                                duration: 800,
+                                easing: 'easeInOutQuad'
+                            });
+                        }, 100);
+                    }
+                });
+            });
+        });
+
+        // Handle add to cart button clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                const productId = parseInt(button.dataset.id);
+                
+                // Find the product in menuData
+                let product;
+                for (const category in menuData) {
+                    product = menuData[category].find(p => p.id === productId);
+                    if (product) break;
+                }
+                
+                if (product) {
+                    // Add to cart
+                    cartItems.push(product);
+                    updateCartCount();
+                    
+                    // Animate the button
+                    anime({
+                        targets: button,
+                        scale: [1, 1.1, 1],
+                        backgroundColor: ['rgba(158, 122, 79, 0.9)', 'rgba(110, 80, 50, 0.9)', 'rgba(158, 122, 79, 0.9)'],
+                        duration: 600,
+                        easing: 'easeInOutQuad'
+                    });
+                    
+                    // Show success message
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate__animated animate__fadeInDown';
+                    notification.innerHTML = `
+                        <i class="fas fa-check-circle mr-2"></i>
+                        ${product.name} به سبد خرید اضافه شد
+                    `;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        anime({
+                            targets: notification,
+                            opacity: 0,
+                            duration: 500,
+                            easing: 'easeInQuad',
+                            complete: () => notification.remove()
+                        });
+                    }, 3000);
+                }
+            }
+        });
+
+        // Update cart items count
+        function updateCartCount() {
+            const cartCount = document.querySelector('#cartButton span');
+            cartCount.textContent = cartItems.length;
+            
+            // Animate the cart count
+            anime({
+                targets: cartCount,
+                scale: [1.5, 1],
+                duration: 500,
+                easing: 'easeOutElastic'
+            });
+        }
+
+        // Make categories sticky on mobile
+        function handleStickyCategories() {
+            const categoriesNav = document.querySelector('.mobile-sticky');
+            if (window.innerWidth < 768) {
+                categoriesNav.classList.add('mobile-sticky');
+            } else {
+                categoriesNav.classList.remove('mobile-sticky');
+            }
+        }
+
+        // Initialize and handle resize
+        window.addEventListener('resize', handleStickyCategories);
+        handleStickyCategories();
+
+        // Add hover effects to all interactive elements
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                anime({
+                    targets: el,
+                    scale: 1.05,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                anime({
+                    targets: el,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
